@@ -1,0 +1,11 @@
+uuid = "d3b5d1d0-2c7e-4b88-9a2d-91ab7a86c9e2"
+authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+# Optional plotting support:
+# Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
