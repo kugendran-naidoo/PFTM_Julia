@@ -11,7 +11,7 @@ This repository accompanies the paper:
 > (K. Naidoo, 2025, draft in preparation)
 
 It provides:
-- Python code (with optional [pytket](https://cqcl.github.io/tket/pytket/api/index.html)) to **construct and measure circuit depths** for the **Projection-Friendly Tree Mapping (PFTM)** and compare against the **Jordan–Wigner (JW)** mapping. This code is an improvement on the quantum circuit first announced in the paper - Representation of the fermionic boundary operator - Akhalwaya et al. - publish in 2022 in Physical Review A - https://journals.aps.org/pra/abstract/10.1103/PhysRevA.106.022407
+- Julia code to **construct and measure circuit depths** for the **Projection-Friendly Tree Mapping (PFTM)** and compare against the **Jordan–Wigner (JW)** mapping. This code is an improvement on the quantum circuit first announced in the paper - Representation of the fermionic boundary operator - Akhalwaya et al. - publish in 2022 in Physical Review A - https://journals.aps.org/pra/abstract/10.1103/PhysRevA.106.022407
 - Reproducible evidence that PFTM reduces worst-case depth from **O(n)** (JW) to **O(log n)**, while preserving bitwise projectors required for topological quantum algorithms (QTDA).
 
 ---
