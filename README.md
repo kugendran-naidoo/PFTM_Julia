@@ -6,6 +6,9 @@
 ![Views](https://img.shields.io/endpoint?cacheSeconds=300&url=https%3A%2F%2Fgist.githubusercontent.com%2Fkugendran-naidoo%2F9b749f24de62343dc995f8d524027c39%2Fraw%2FPFTM_Julia-views.json%3Fv%3D3)
 > Auto-updated daily at 14:00 UTC via GitHub Actions.
 
+## 📈 Metrics
+![Activity (last 4 weeks)](https://raw.githubusercontent.com/kugendran-naidoo/PFTM_Julia/main/metrics/activity_4w.png)
+
 # Projection-Friendly Tree Mapping (PFTM)
 
 **Short-depth fermionic mappings for quantum topological algorithms.**
