@@ -24,9 +24,9 @@ jobs:
 
       - name: Fetch repository traffic data
         env:
-          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}   # <-- use PAT with public_repo/repo
+          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
           OWNER: kugendran-naidoo
-          REPO: htakenote_DevOps
+          REPO: PFTM_Julia
         run: |
           set -euo pipefail
           mkdir -p traffic
@@ -47,14 +47,19 @@ jobs:
           echo "TOTAL_VIEWS=$TOTAL_VIEWS"
           echo "TOTAL_CLONES=$TOTAL_CLONES" >> $GITHUB_ENV
           echo "TOTAL_VIEWS=$TOTAL_VIEWS"   >> $GITHUB_ENV
+          # also compute filenames once here
+          echo "F_CLONES=${REPO}-clones.json" >> $GITHUB_ENV
+          echo "F_VIEWS=${REPO}-views.json"   >> $GITHUB_ENV
 
-      - name: Update clones.json gist via API (PATCH)
+      - name: Update clones badge file in Gist (PATCH)
         env:
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}     # PAT with 'gist'
         run: |
           set -euo pipefail
-          BODY=$(jq -nc --arg content "{\"schemaVersion\":1,\"label\":\"clones \",\"message\":\"${TOTAL_CLONES}\",\"color\":\"blue\"}" \
-            '{files: {"clones.json": {content: $content}}}')
+          BODY=$(jq -nc \
+            --arg fname "${F_CLONES}" \
+            --arg content "{\"schemaVersion\":1,\"label\":\"clones \",\"message\":\"${TOTAL_CLONES}\",\"color\":\"blue\"}" \
+            '{files: {($fname): {content: $content}}}')
           curl -sS -o /tmp/resp.json -w "%{http_code}" -X PATCH \
             -H "Authorization: Bearer ${GIST_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
@@ -62,13 +67,15 @@ jobs:
             -d "$BODY" | tee /tmp/http_code.txt
           test "$(cat /tmp/http_code.txt)" -ge 200 -a "$(cat /tmp/http_code.txt)" -lt 300 || (echo "Response:" && cat /tmp/resp.json && exit 1)
 
-      - name: Update views.json gist via API (PATCH)
+      - name: Update views badge file in Gist (PATCH)
         env:
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}     # PAT with 'gist'
         run: |
           set -euo pipefail
-          BODY=$(jq -nc --arg content "{\"schemaVersion\":1,\"label\":\"views \",\"message\":\"${TOTAL_VIEWS}\",\"color\":\"green\"}" \
-            '{files: {"views.json": {content: $content}}}')
+          BODY=$(jq -nc \
+            --arg fname "${F_VIEWS}" \
+            --arg content "{\"schemaVersion\":1,\"label\":\"views \",\"message\":\"${TOTAL_VIEWS}\",\"color\":\"green\"}" \
+            '{files: {($fname): {content: $content}}}')
           curl -sS -o /tmp/resp.json -w "%{http_code}" -X PATCH \
             -H "Authorization: Bearer ${GIST_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
