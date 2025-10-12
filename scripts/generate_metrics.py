@@ -8,6 +8,13 @@ OWNER = os.environ.get("OWNER")
 REPO  = os.environ.get("REPO")
 TOKEN = os.environ.get("GH_TOKEN")
 
+# Fallback: derive from GITHUB_REPOSITORY ("owner/repo")
+if (not OWNER or not REPO) and os.environ.get("GITHUB_REPOSITORY"):
+    owner_repo = os.environ["GITHUB_REPOSITORY"]
+    if "/" in owner_repo:
+        OWNER = OWNER or owner_repo.split("/", 1)[0]
+        REPO  = REPO  or owner_repo.split("/", 1)[1]
+
 if not all([OWNER, REPO, TOKEN]):
     print("Missing OWNER/REPO/GH_TOKEN env vars"); sys.exit(1)
 
