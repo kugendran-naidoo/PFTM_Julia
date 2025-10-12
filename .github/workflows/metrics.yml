@@ -8,7 +8,7 @@ jobs:
   build-metrics:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to push chart + history file
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -23,10 +23,13 @@ jobs:
 
       - name: Generate 4-week dashboard
         env:
-          GH_TOKEN: ${{ secrets.STATS_TOKEN }}   # classic PAT with public_repo/repo
-          OWNER: kugendran-naidoo
-          REPO: htakenote_DevOps
+          GH_TOKEN: ${{ secrets.STATS_TOKEN }}                # PAT for API reads
+          OWNER:  ${{ github.repository_owner }}              # e.g. kugendran-naidoo
+          REPO:   ${{ github.event.repository.name || github.repository }}
+          # github.repository is "owner/repo" on some events; trim it in-line:
         run: |
+          if [[ "$REPO" == */* ]]; then REPO="${REPO#*/}"; export REPO; fi
+          echo "Using OWNER=$OWNER REPO=$REPO"
           python scripts/generate_metrics.py
 
       - name: Commit updated chart + history
