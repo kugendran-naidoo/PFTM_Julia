@@ -1,7 +1,4 @@
 {
-  "2025-10-01": {
-    "clones": 1
-  },
   "2025-10-04": {
     "clones": 1
   },
@@ -212,45 +209,59 @@
     "clones": 7
   },
   "2025-12-16": {
-    "clones": 4
+    "clones": 4,
+    "views": 0
   },
   "2025-12-17": {
-    "clones": 6
+    "clones": 6,
+    "views": 0
   },
   "2025-12-18": {
-    "clones": 2
+    "clones": 2,
+    "views": 0
   },
   "2025-12-19": {
-    "clones": 8
+    "clones": 8,
+    "views": 0
   },
   "2025-12-20": {
-    "clones": 11
+    "clones": 11,
+    "views": 0
   },
   "2025-12-21": {
-    "clones": 6
+    "clones": 6,
+    "views": 0
   },
   "2025-12-22": {
-    "clones": 6
+    "clones": 6,
+    "views": 0
   },
   "2025-12-23": {
-    "clones": 5
+    "clones": 5,
+    "views": 0
   },
   "2025-12-24": {
-    "clones": 13
+    "clones": 13,
+    "views": 0
   },
   "2025-12-25": {
-    "clones": 9
+    "clones": 9,
+    "views": 0
   },
   "2025-12-26": {
-    "clones": 9
+    "clones": 9,
+    "views": 0
   },
   "2025-12-27": {
-    "clones": 11
+    "clones": 11,
+    "views": 0
   },
   "2025-12-28": {
-    "clones": 7
+    "clones": 7,
+    "views": 0
   },
   "2025-12-29": {
-    "clones": 7
+    "clones": 7,
+    "views": 0
   }
 }
